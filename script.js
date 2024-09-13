@@ -19,3 +19,31 @@
   함수형 프로그래밍
   : 호이스팅과 렉시컬 스코프를 활용한 클로저를 바탕으로 특정 기능마다의 변수, 함수를 모듈화해서 재사용하는 프로그래밍 방법론 (리액트 16.4버전부터 함수형 프로그래밍 방식 고차함수 개념으로 컴포넌트 제작)
 */
+
+//객체 리터럴 방식
+const student1 = {
+	name: 'Andy',
+	age: 20,
+	isFemale: false
+};
+
+//객체명.propertyKey
+console.log(student1.name);
+
+//연관배열 형식
+console.log(student1['age']);
+
+//객체의 property key에 함수도 등록 가능
+const student2 = {
+	name: 'Julia',
+	age: 30,
+	isFemale: true,
+	inform: () => {
+		console.log('My name is Julia and I am 30 years old.');
+	}
+};
+
+//객체 안에 등록되어 있는 함수를 메서드(prototype에 등록된 함수: 메서드)
+//자바스크립트에서는 이처럼 객체 property로 등록가능하거나 함수의 인수로 전달가능하거나
+//변수에 대입할 수 있는 함수를 일급 객체
+student2.inform();

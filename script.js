@@ -39,11 +39,28 @@ const student2 = {
 	age: 30,
 	isFemale: true,
 	inform: () => {
-		console.log('My name is Julia and I am 30 years old.');
+		//console.log('My name is Julia and I am 30 years old.');
+		console.log(this);
 	}
 };
 
 //객체 안에 등록되어 있는 함수를 메서드(prototype에 등록된 함수: 메서드)
-//자바스크립트에서는 이처럼 객체 property로 등록가능하거나 함수의 인수로 전달가능하거나
-//변수에 대입할 수 있는 함수를 일급 객체
+//자바스크립트에서는 이처럼 객체의 property로 등록가능하거나 함수의 인수로 전달가능하거나
+//변수에 대입할 수 있는 함수를 일급 객체라고 표현
 student2.inform();
+
+//객체리터럴 안쪽에서의 this: widnow객체 (전역객체)
+
+//생성자를 통한 인스턴스를 복사하는 법
+function Student() {
+	this.name = 'Emily';
+	this.age = 20;
+	this.isFemale = true;
+}
+
+//아래와 같이 new 연산자를 이용해서 Student 생성자 함수 호출하면
+//인스턴스라는 특별한 복사본 객체를 생성가능
+//인스턴스 객체는 같은 생성자함수를 통해서 생성된 모든 인스턴스들이 공유할 수 있는 prototype이라는 공간을 공유
+//prototype: 해당 복사본 객체들이 공통적으로 활용해야 되는 함수를 등록 (메서드)
+const studentCopy1 = new Student();
+console.log(studentCopy1);

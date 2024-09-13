@@ -57,10 +57,10 @@ function Student(props) {
 	this.age = props.age || 20; //대입되는 값뒤에 ||연산자를 입력하면 해당 값이 undefined일때 대체값 설정
 	this.isFemale = props.isFemale;
 }
+//생성자에 자동 생성된 prototype에 property를 등록하고 모든 인스턴스들이 재활용할만한 함수 등록 가능 (메서드)
 Student.prototype.inform = function () {
 	console.log('My Name is ' + this.name + ' and I am' + this.age + 'years old.');
 };
-
 //아래와 같이 new 연산자를 이용해서 Student 생성자 함수 호출하면
 //인스턴스라는 특별한 복사본 객체를 생성가능
 //인스턴스 객체는 같은 생성자함수를 통해서 생성된 모든 인스턴스들이 공유할 수 있는 prototype이라는 공간을 공유
@@ -68,7 +68,6 @@ Student.prototype.inform = function () {
 const studentCopy1 = new Student({ name: 'Emily', isFemale: true });
 const studentCopy2 = new Student({ name: 'David', isFemale: false });
 const studentCopy3 = new Student({ name: 'Michael', isFemale: false, age: 19 });
-
 //생성자 함수를 통해서 인스턴스라는 복사본을 만들면 약속된 정보값과 매칭되지 않는 값을 거를 수 있음
 //Sudent라는 생성자 함수 안에는 address값을 인스턴스로 전달하는 항목이 없기 때문에 의도치 않은 address정보가 입력되어도
 //인스턴스에는 잘못된 정보가 전달되지 않음
@@ -77,13 +76,11 @@ console.log(studentCopy1);
 console.log(studentCopy2);
 console.log(studentCopy3);
 console.log(studentCopy4);
-
 studentCopy1.inform();
 studentCopy2.inform();
-
 /*
   new 생성자함수() --> 인스턴스라는 공통의 틀을 가지고있는 복사본 객체를 대량 생산 가능
-  각각의 인스턴스들을 메서드라는 특정 함수를 공유하면서 자유롭게 호출 가능
+  각각의 인스턴스들은 메서드라는 특정 함수를 공유하면서 자유롭게 호출 가능
   인스턴스라는 복사본 객체를 생성해서 작업하는 프로그래밍 방법론 : 객체지향 프로그래밍
   객체지향 프로그래밍을 쓰는 이유 : 동일한 구조의 객체를 안전하게 생성해서 쓰기위함, 반복되는 함수를 인스턴스별로 적용해서 재활용하기 위함
 */
